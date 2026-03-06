@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## Futtatás
 
 First, run the development server:
 
@@ -20,18 +20,29 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## Használt technológiák
 
-To learn more about Next.js, take a look at the following resources:
+A projekt során a következő technológiákat alkalmaztam:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Next.js – a projekt keretrendszere
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+shadcn/ui komponensek – gyors és egységes UI építéshez
 
-## Deploy on Vercel
+Zustand – állapotkezeléshez
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Tabler Icons – ikonokhoz
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# todo-app-next
+UUID – egyedi azonosítók generálásához
+
+## Mit csinálnék másképp, ha több időm lenne?
+
+Ha több idő állt volna rendelkezésre, saját, teljesen testreszabott UI könyvtárat építettem volna. Ebben minden komponenst úgy kötök be és terveznék, ahogy szeretném, a dizájn részleteit is pontosabban szabnám meg.
+
+## Milyen problémákba ütköztem?
+
+A shadcn/ui előre elkészített komponensei gyors megoldást adtak, de néhány esetben nem teljesen feleltek meg az elképzeléseimnek, ezért kompromisszumokra kényszerültem. Több függőség és a responsive kialakításnál adódó problémák is okoztak kihívást, amelyekhez plusz utómunkára lett volna szükség.
+
+## Design koncepció
+
+A cél egy egyszerű, tiszta Todo app UI megteremtése volt, semmi felesleges funkcióval vagy túlzott színvilággal. A shadcn komponensek ideális választásnak bizonyultak, mert egy semleges témával gyorsan és egységesen lehetett felépíteni a felületet.
+Az egyszerű, jól áttekinthető felépítés lehetővé teszi, hogy a felhasználó könnyen navigáljon, és csak a szükséges adatokat lássa. A design fókusza a használhatóságon és a letisztultságon volt, minden vizuális elem célzottan jelenik meg.
