@@ -9,7 +9,7 @@ export const ToDoAlert = () => {
 
   return (
     <div
-      className="fixed bottom-4 right-4 z-100 w-full max-w-sm cursor-pointer animate-in fade-in slide-in-from-bottom-4"
+      className="fixed sm:top-4 sm:right-4 sm:w-auto sm:max-w-md sm:bottom-auto bottom-4 sm:px-0 px-4 z-100 w-full max-w-lg cursor-pointer animate-in fade-in sm:slide-in-from-top-4 slide-in-from-bottom-4"
       onClick={hideAlert}
     >
       <Alert variant={variant}>

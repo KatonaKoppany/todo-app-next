@@ -3,7 +3,7 @@ import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from "../u
 
 interface ToDoItemProps {
   title: string;
-  description: string;
+  description?: string;
   variant?: "default" | "outline" | "muted";
   size?: "default" | "sm";
   action?: ReactNode;
@@ -14,7 +14,7 @@ export const ToDoItem = ({ title, description, variant = "default", size = "defa
     <Item variant={variant} size={size}>
       <ItemContent>
         <ItemTitle>{title}</ItemTitle>
-        <ItemDescription>{description}</ItemDescription>
+        {description && <ItemDescription>{description}</ItemDescription>}
       </ItemContent>
 
       {action && <ItemActions>{action}</ItemActions>}
