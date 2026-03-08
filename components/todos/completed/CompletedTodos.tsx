@@ -9,7 +9,7 @@ import { IconChevronLeft, IconRefresh, IconTrash, IconCheck } from "@tabler/icon
 import { useAlertStore } from "@/store/useAlert";
 import { useAlertDialogStore } from "@/store/useAlertDialog";
 
-const CompletedTodos = () => {
+const todos = () => {
   const route = useRouter();
   const { todos, remove, update } = useTodos(true);
   const { showAlert } = useAlertStore();
@@ -45,32 +45,41 @@ const CompletedTodos = () => {
   };
 
   return (
-    <div className="w-full h-screen flex flex-col items-center">
-      <div className="sm:w-xl w-full space-y-8">
-        <div className="relative bg-foreground sm:h-24 h-16 flex items-center rounded-b-xl">
-          <ToDoIconButton
-            icon={IconChevronLeft}
-            className="bg-background text-foreground absolute left-3 hover:bg-accent/80 sm:hidden inline-flex"
-            onClick={() => route.back()}
-          />
+    <div className="w-full h-screen bg-background flex flex-col items-center overflow-hidden">
+      <div className="w-full bg-foreground py-6 sm:py-10 mb-6 sm:mb-8 rounded-b-xl sm:rounded-b-[3.5rem] shadow-lg px-4 shrink-0">
+        <h1 className="text-3xl sm:text-6xl text-background font-black text-center tracking-tight">
+          My <span className="text-primary-foreground/70">ToDo</span>
+        </h1>
+      </div>
 
-          <ToDoButton
-            text="Vissza"
-            className="bg-background text-foreground absolute left-3 hover:bg-accent/80 hidden sm:inline-flex"
-            onClick={() => route.back()}
-          />
-
-          <h1 className="sm:text-7xl text-4xl text-background font-black mx-auto ">My ToDo</h1>
+      <div className="w-full max-w-xl px-4 flex flex-col gap-6 flex-1 min-h-0">
+        <div className="flex bg-muted p-1 rounded-2xl">
+          <button
+            onClick={() => route.push("/todos")}
+            className="flex-1 py-2.5 text-center rounded-xl text-muted-foreground hover:text-foreground font-semibold text-sm transition-all"
+          >
+            Aktív
+          </button>
+          <button
+            className="flex-1 py-2.5 text-center rounded-xl bg-background shadow-sm font-bold text-sm transition-all"
+            disabled
+          >
+            Teljesített ({todos.length})
+          </button>
         </div>
 
-        <div className="flex flex-col items-center space-y-8">
-          <div className="sm:w-full w-sm">
-            <span className="sm:text-4xl text-2xl font-bold text-foreground">Teljesített ToDo-k</span>
+        <div className="flex flex-col flex-1 min-h-0 space-y-4">
+          <div className="flex justify-between items-center px-1">
+            <h2 className="text-lg sm:text-xl font-bold text-foreground/80 text-center sm:text-left w-full sm:w-auto">
+              Lezárt feladatok
+            </h2>
           </div>
 
-          <div className="sm:w-full w-sm flex flex-col gap-3 max-h-[60vh] overflow-y-auto pr-2 scrollbar-thin">
+          <div className="bg-card p-2 mb-4 rounded-xl flex flex-col gap-3 flex-1 overflow-y-auto no-scrollbar">
             {todos.filter((t) => t.status).length === 0 ? (
-              <p className="text-center text-muted-foreground py-6">Még nincs teljesített ToDo!</p>
+              <div className="text-center py-10 border-2 border-dashed rounded-3xl opacity-40 mx-2">
+                <p className="font-medium">Nincs lezárt feladat.</p>
+              </div>
             ) : (
               todos
                 .filter((t) => t.status)
@@ -78,12 +87,16 @@ const CompletedTodos = () => {
                   <ToDoItem
                     key={todo.id}
                     title={todo.title}
-                    description="Teljesített"
                     variant="outline"
                     action={
-                      <>
-                        <div className="gap-2 hidden sm:inline-flex">
-                          <ToDoButton text="Vissza" size="sm" variant="secondary" onClick={() => toggleTodo(todo.id)} />
+                      <div className="flex items-center gap-2">
+                        <div className="hidden sm:flex gap-2">
+                          <ToDoButton
+                            text="Visszaállít"
+                            size="sm"
+                            variant="secondary"
+                            onClick={() => toggleTodo(todo.id)}
+                          />
                           <ToDoButton
                             text="Törlés"
                             size="sm"
@@ -92,11 +105,21 @@ const CompletedTodos = () => {
                           />
                         </div>
 
-                        <div className="gap-2 inline-flex sm:hidden">
-                          <ToDoIconButton icon={IconRefresh} variant="secondary" onClick={() => toggleTodo(todo.id)} />
-                          <ToDoIconButton icon={IconTrash} variant="destructive" onClick={() => deleteTodo(todo.id)} />
+                        <div className="flex sm:hidden gap-2">
+                          <ToDoIconButton
+                            icon={IconRefresh}
+                            variant="secondary"
+                            className="h-10 w-10 rounded-lg"
+                            onClick={() => toggleTodo(todo.id)}
+                          />
+                          <ToDoIconButton
+                            icon={IconTrash}
+                            variant="destructive"
+                            className="h-10 w-10 rounded-lg"
+                            onClick={() => deleteTodo(todo.id)}
+                          />
                         </div>
-                      </>
+                      </div>
                     }
                   />
                 ))
@@ -108,4 +131,4 @@ const CompletedTodos = () => {
   );
 };
 
-export default CompletedTodos;
+export default todos;
