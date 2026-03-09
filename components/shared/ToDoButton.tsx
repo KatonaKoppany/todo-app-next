@@ -7,7 +7,7 @@ interface ToDoButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
   size?: "default" | "xs" | "sm" | "lg";
 }
 
-export const ToDoButton = ({ text, variant = "default", size = "default", onClick, ...props }: ToDoButtonProps) => {
+export const ToDoButton = ({ text, variant, size, onClick, ...props }: ToDoButtonProps) => {
   return (
     <Button variant={variant} size={size} onClick={onClick} {...props}>
       {text}
